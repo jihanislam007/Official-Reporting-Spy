@@ -248,10 +248,11 @@ public class LogInActivity extends Activity implements AdapterView.OnItemSelecte
                     RequestParams params = new RequestParams();
                     params.add("username", user_name.getText().toString());
                     params.add("password", getPassword());
+                    params.add("type", "spy");
 
                     offlineInfo.saveUserName( user_name.getText().toString());
 
-                    client.post(ServerInfo.BASE_URL + "ReporterLogin/", params, new JsonHttpResponseHandler() {
+                    client.post(ServerInfo.BASE_URL + "UserLogin/", params, new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
@@ -283,8 +284,10 @@ public class LogInActivity extends Activity implements AdapterView.OnItemSelecte
                     RequestParams params = new RequestParams();
                     params.add("username", user_name.getText().toString());
                     params.add("password", getPassword());
+                    params.add("type", "admin");
+
                     offlineInfo.saveUserName( user_name.getText().toString());
-                    client.post(ServerInfo.BASE_URL + "Login/", params, new JsonHttpResponseHandler() {
+                    client.post(ServerInfo.BASE_URL + "login/", params, new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
