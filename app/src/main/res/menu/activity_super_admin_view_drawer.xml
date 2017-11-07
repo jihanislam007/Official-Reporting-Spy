@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@android:drawable/ic_menu_set_as"
+            android:title="Admin Control" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
+            android:title="New Spy Account" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="Spy List" />
+        <item
+            android:id="@+id/passwod_change"
+            android:icon="@android:drawable/ic_menu_mylocation"
+            android:title="Super Admin Password Change" />
+        <item
+            android:id="@+id/settings_change"
+            android:icon="@android:drawable/ic_menu_set_as"
+            android:title="Settings" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <!--<item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />-->
+        </menu>
+    </item>
+
+</menu>

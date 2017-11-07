@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    tools:context="md.mazharul.islam.jihan.reportings.Activity.SettingsActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:background="@color/loginBackground">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Mail নির্বাচন করুন"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:background="@drawable/ractangular_border">
+
+            <Spinner
+                android:id="@+id/MailChoiceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="40dp"></Spinner>
+
+        </LinearLayout>
+
+
+
+
+                <Button
+                    android:id="@+id/EmailSendButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Send"
+                    android:textSize="20sp"
+                    android:background="@color/loginBackground"
+                    android:textColor="#FFFFFF"
+                    android:minHeight="40dp"
+                    android:layout_marginTop="8dp"/>
+
+
+
+        </LinearLayout>
+
+</LinearLayout>
