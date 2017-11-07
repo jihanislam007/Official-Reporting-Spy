@@ -13,6 +13,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
@@ -40,6 +41,20 @@ public class ClientAdminControlActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final Animation myAnim = AnimationUtils.loadAnimation(ClientAdminControlActivity.this, R.anim.bounce);
                 StopAdminButton.startAnimation(myAnim);
+
+                AsyncHttpClient client=new AsyncHttpClient();
+                client.get(ServerInfo.BASE_URL+"StopAdmin",new JsonHttpResponseHandler(){
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        try {
+                            if(response.getBoolean("res")){
+                                Toast.makeText(ClientAdminControlActivity.this, "Successfully stop admin", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
 

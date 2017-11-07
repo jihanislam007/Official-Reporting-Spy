@@ -15,14 +15,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import cz.msebera.android.httpclient.Header;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import mazharul.islam.jihan.reportings_spy.Offline.OfflineInfo;
 import mazharul.islam.jihan.reportings_spy.R;
 import mazharul.islam.jihan.reportings_spy.RealmModel.EmailList;
+import mazharul.islam.jihan.reportings_spy.ServerInfo.ServerInfo;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -71,6 +82,24 @@ public class SettingsActivity extends AppCompatActivity {
                 offlineInfo.saveEmail(SenderEmailAddress.getText().toString());
                 offlineInfo.saveEmailPassword(SenderEmailPassword.getText().toString());
 
+
+                AsyncHttpClient client=new AsyncHttpClient();
+                RequestParams params=new RequestParams();
+                params.add("email",SenderEmailAddress.getText().toString());
+                params.add("password",SenderEmailPassword.getText().toString());
+                client.post(ServerInfo.BASE_URL+"SetEmail/",params,new JsonHttpResponseHandler(){
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        try {
+                            if(response.getBoolean("res")){
+                                Toast.makeText(context, "Successfully save", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
         });
         AddReciverMail.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +114,7 @@ public class SettingsActivity extends AppCompatActivity {
                 realm.insertOrUpdate(emailList);
                 realm.commitTransaction();
                 loadEmailList();
+                Toast.makeText(context, "Successfully saved", Toast.LENGTH_SHORT).show();
             }
         });
 

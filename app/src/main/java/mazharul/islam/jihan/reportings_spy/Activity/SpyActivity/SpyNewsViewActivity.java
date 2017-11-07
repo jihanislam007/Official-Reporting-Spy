@@ -72,10 +72,15 @@ public class SpyNewsViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                /*Intent in = new Intent(SpyNewsViewActivity.this , DetailsNewsViewActivity.class);
+                startActivity(in);*/
+
                 Intent in = new Intent(SpyNewsViewActivity.this , DetailsNewsViewActivity.class);
+                in.putExtra("id",reportListItems.get(position).reportId);
                 startActivity(in);
             }
         });
+        loadReportList();
     }
 
     public void loadReportList(){
